@@ -18,7 +18,7 @@ class RCON{
 
         RCON(std::string payload, int32_t ID=0, RCON::Type type=RCON::Type::SERVERDATA_EXECCOMMAND);
 
-        std::string getPrintable();
+        std::string getPrintable(bool showID=false);
 
         void encodeRCON(pchar*& rawRCON);
         static RCON* decodeRCON(pchar*& rawRCON);

@@ -9,16 +9,18 @@ RCON::RCON(std::string payload, int32_t ID, RCON::Type type)
 ,payload(payload)
 {}
 
-std::string RCON::getPrintable()
+std::string RCON::getPrintable(bool showID)
 {
-    constexpr size_t IDLen = 4;
-    pchar ID[IDLen+1] = {' '};
-
-    sprintf(ID, "%*d ", IDLen, payload.size());
-
-    std::string ret(payload);
-    ret.insert(0, ID, IDLen+1);
-    return ret;
+    if(showID){
+        constexpr size_t IDLen = 4;
+        pchar ID[IDLen+1] = {' '};
+        sprintf(ID, "%*d ", IDLen, payload.size());
+        std::string ret(payload);
+        ret.insert(0, ID, IDLen+1);
+        return ret; 
+    } else {
+        return payload;
+    }
 }
 
 RCON* RCON::decodeRCON(pchar*& rawRCON){
