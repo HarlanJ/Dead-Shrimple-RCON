@@ -1,0 +1,6 @@
+[submodule "libs/CLI11"]
+	path = libs/CLI11
+	url = https://github.com/CLIUtils/CLI11
+[submodule "libs/plibsys"]
+	path = libs/plibsys
+	url = https://github.com/saprykin/plibsys
