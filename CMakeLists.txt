@@ -1,4 +1,4 @@
-cmake_minimum_required( VERSION 3.27.0-rc4 )
+cmake_minimum_required( VERSION 3.15 )
 project( Dead_Shrimple_RCON )
 
 
