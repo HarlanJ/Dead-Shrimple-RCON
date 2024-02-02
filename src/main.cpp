@@ -23,7 +23,7 @@ int main(int argc, char** argv){
     CLI::App app{"Dead Shrimple RCON"};
 
     std::string password;
-    std::string ips{"127.000.000.001"};
+    std::string ips{"127.0.0.1"};
     puint16 port{27015};
     bool interactive{false};
     std::vector<std::string> run;
@@ -48,6 +48,8 @@ int main(int argc, char** argv){
         printf("Could not create socket: %s\n", p_error_get_message(err));
         p_error_free(err);
         p_socket_free(socket);
+
+        if(!quiet) printf("exiting\n");
         return 0;
     }
 
@@ -61,6 +63,9 @@ int main(int argc, char** argv){
         p_error_free(err);
         p_socket_address_free(address);
         p_socket_free(socket);
+
+        if(!quiet) printf("exiting\n");
+        return 0;
     }
     p_socket_address_free(address);
 
