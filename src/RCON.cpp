@@ -13,11 +13,9 @@ std::string RCON::getPrintable(bool showID)
 {
     if(showID){
         constexpr size_t IDLen = 4;
-        pchar ID[IDLen+1] = {' '};
-        sprintf(ID, "%*d ", IDLen, payload.size());
-        std::string ret(payload);
-        ret.insert(0, ID, IDLen+1);
-        return ret; 
+        pchar ID[IDLen+1+payload.size()] = {' '};
+        sprintf(ID, "%*zu %s", static_cast<int>(IDLen), payload.size(), payload.c_str());
+        return std::string(ID); 
     } else {
         return payload;
     }
