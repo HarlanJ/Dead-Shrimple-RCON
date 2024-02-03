@@ -23,12 +23,11 @@ class RCON{
         void encodeRCON(pchar*& rawRCON);
         static RCON* decodeRCON(pchar*& rawRCON);
 
-        // Returns total buffer size
-        int32_t     getSize()   { return size+sizeof(size);    }
-        int32_t     getID()     {   return ID;    }
-        RCON::Type  getType()   { return type;    }
-        std::string getPayload(){ return payload; }
-
+        int32_t     getBufferSize(){return size+sizeof(size); }
+        int32_t     getSize()      { return size;    }
+        int32_t     getID()        { return ID;      }
+        RCON::Type  getType()      { return type;    }
+        std::string getPayload()   { return payload; }
         void setID(int32_t ID)              { this->ID = ID;      }
         void setType(RCON::Type type)       { this->type = type;    }
         void setPayload(std::string payload){ this->payload = payload; }

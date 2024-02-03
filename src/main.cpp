@@ -102,7 +102,7 @@ int main(int argc, char** argv){
 
     msg = new RCON(password, 0, RCON::SERVERDATA_AUTH);
     msg->encodeRCON(buffer);
-    p_socket_send(socket, buffer, msg->getSize(), nullptr);
+    p_socket_send(socket, buffer, msg->getBufferSize(), nullptr);
     delete msg;
 
     p_socket_receive(socket, buffer, bufferSize, nullptr);
@@ -127,7 +127,7 @@ int main(int argc, char** argv){
             /// Assemble and send the RCON message
             msg = new RCON(cmd, 0, RCON::SERVERDATA_EXECCOMMAND);
             msg->encodeRCON(buffer);
-            p_socket_send(socket, buffer, msg->getSize(), nullptr);
+            p_socket_send(socket, buffer, msg->getBufferSize(), nullptr);
             delete msg;
 
             p_socket_receive(socket, buffer, bufferSize, nullptr);
@@ -140,7 +140,7 @@ int main(int argc, char** argv){
         for(std::string cmd : run){
             msg = new RCON(cmd, 0, RCON::SERVERDATA_EXECCOMMAND);
             msg->encodeRCON(buffer);
-            p_socket_send(socket, buffer, msg->getSize(), nullptr);
+            p_socket_send(socket, buffer, msg->getBufferSize(), nullptr);
             delete msg;
 
             p_socket_receive(socket, buffer, bufferSize, nullptr);

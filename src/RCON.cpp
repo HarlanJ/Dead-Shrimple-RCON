@@ -44,7 +44,7 @@ RCON* RCON::decodeRCON(pchar*& rawRCON){
 
 void RCON::encodeRCON(pchar*& rawRCON){
     if(rawRCON == nullptr){
-        rawRCON = new pchar[this->getSize()];
+        rawRCON = new pchar[this->getBufferSize()];
     }
 
     RCON::littleEndian(this->size, &rawRCON[0]);
@@ -57,5 +57,5 @@ void RCON::encodeRCON(pchar*& rawRCON){
         &rawRCON[sizeof(this->size)+sizeof(this->ID)+sizeof(this->type)],
         payload.c_str(), payload.size()
     );
-    rawRCON[this->getSize()-2] = rawRCON[this->getSize()-1] = 0x00;
+    rawRCON[this->getBufferSize()-2] = rawRCON[this->getBufferSize()-1] = 0x00;
 }
